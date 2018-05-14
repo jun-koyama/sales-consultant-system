@@ -1,0 +1,21 @@
+database:
+   restart: always
+   image: postgres:latest
+   volumes:
+       - pgdata:/var/lib/postgresql/data/
+   environment:
+       POSTGRES_USER: flask
+restapi:
+   build: .
+   volumes:
+       - ./restapi:/flask
+   ports:
+       - "8080:8080"
+   links:
+       - database
+   environment:
+       DEBUG: "true"
+       DATABASE_NAME: flask
+       DATABASE_USER: flask
+       DATABASE_PASSWORD: flask
+       DATABASE_SERVICE_HOST: database
