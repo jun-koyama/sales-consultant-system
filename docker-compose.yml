@@ -2,7 +2,7 @@ database:
    restart: always
    image: postgres:latest
    volumes:
-       - pgdata:/var/lib/postgresql/data/
+       - ./pgdata:/var/lib/postgresql/data/
    environment:
        POSTGRES_USER: flask
 restapi:
